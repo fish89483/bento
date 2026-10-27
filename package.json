@@ -1,0 +1,24 @@
+{
+  "name": "bento",
+  "version": "1.0.0",
+  "description": "Bento is a browser-based lunch log with free, on-device OCR.",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "copy-ort-assets": "node scripts/copy-ort-assets.mjs",
+    "migrate:supabase": "node scripts/migrate-local-data.mjs",
+    "dev": "vite --host 0.0.0.0",
+    "build": "npm run copy-ort-assets && vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@paddleocr/paddleocr-js": "^0.4.2",
+    "opencc-js": "^1.4.2"
+  },
+  "devDependencies": {
+    "vite": "^5.4.21"
+  }
+}
