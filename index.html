@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f4ef"><title>飯友 Bento Log</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="main-sidebar">
+      <a class="brand" href="#home" aria-label="飯友首頁"><span class="brand-mark">飯</span><span>飯友<span class="brand-en">BENTO LOG</span></span></a>
+      <div class="workspace-label">TEAM SPACE</div>
+      <nav class="main-nav">
+        <a href="#home" class="nav-link active" data-route="home"><span class="nav-icon">▦</span>便當圖鑑</a>
+        <a href="#people" class="nav-link" data-route="people"><span class="nav-icon">♙</span>飯友名單</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="tiny-sun">✳</div><p>把每一餐，<br>都變成好回憶。</p><span>Made for hungry teams</span></div>
+      <div class="sidebar-foot">A LITTLE FOOD MEMORY<br>FOR THE WHOLE TEAM</div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar"><button class="mobile-menu-button" type="button" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="main-sidebar"><span></span><span></span><span></span></button><div class="mobile-brand"><span class="brand-mark">飯</span> 飯友</div><div class="topbar-note"><span class="live-dot"></span>團隊的便當小日記</div><div class="topbar-actions"><div id="account-badge" class="account-badge"></div><button class="button button-primary top-add" data-action="new">＋ <span>記一筆便當</span></button></div></header>
+      <section id="view" class="view"></section>
+    </main>
+  </div>
+  <button id="mobile-nav-backdrop" class="mobile-nav-backdrop" type="button" aria-label="關閉導覽選單" tabindex="-1"></button>
+  <div id="modal-root"></div>
+  <div id="login-root"></div>
+  <div id="toast" class="toast" role="status"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
