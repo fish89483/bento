@@ -19,3 +19,6 @@
   .sidebar.mobile-open{transform:translateX(0)}
   .mobile-nav-backdrop.visible{display:block;position:fixed;inset:60px 0 0;border:0;background:#1d2a226e;z-index:11}
 }
+
+.hero-add{margin-top:16px}
+.meal-controls{display:flex;align-items:center;gap:12px}

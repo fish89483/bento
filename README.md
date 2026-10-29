@@ -25,12 +25,13 @@ The passwordless email and nickname flow is only a display identity. Anyone with
 
 ## Use Supabase instead
 
-1. Create a Supabase project and run `supabase/schema.sql` in its SQL Editor.
+1. Create a Supabase project and run `supabase/schema.sql` in its SQL Editor. It creates normalized `shops`, `items`, `people`, `meals`, `tags`, `item_tags`, and `meal_tags` tables, plus `display_accounts` for the current demo identity flow.
 2. Copy `.env.example` to `.env.local`, then fill in the project URL and publishable key from the Supabase project settings. Keep the publishable key paired with the RLS policies in the SQL file; never put a service-role key in the frontend.
 3. Restart `npm run dev`. When the Supabase settings are present, Bento reads and writes the shared state through Supabase instead of the local API.
 4. To seed the cloud database from this local test data, run `npm run migrate:supabase` once after creating `.env.local`.
+5. If `bento_state` did not already contain data when you first ran the schema, run `supabase/schema.sql` again to import that seeded row into the normalized tables.
 
-The initial schema stores Bento's current app model as one JSONB state row to keep this MVP migration small. Its policies allow public reads and writes for trusted testing; do not use that policy for private or production data. A Supabase database does not host the Vite website, so external testers will also need the frontend deployed to a static host.
+The Supabase frontend path now reads and writes the normalized `shops`, `items`, `people`, `meals`, `tags`, junction, and `display_accounts` tables directly. It inserts records by stable IDs and ignores conflicts for already existing meals, so a stale browser snapshot does not overwrite another user's meal. `items.current_price` holds the current list price, while each `meals.price` keeps the amount for that meal. The compatibility `bento_state` table and its merge/mirror triggers remain for the currently deployed GitHub Pages version until that frontend is redeployed. Policies allow public reads and writes for trusted testing; do not use them for private or production data. A Supabase database does not host the Vite website, so external testers also need the frontend deployed to a static host.
 
 ## Publish a trusted test site with GitHub Pages
 
